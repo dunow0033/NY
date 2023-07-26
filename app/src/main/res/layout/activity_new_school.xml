@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/emailButton"
+        android:layout_width="@dimen/action_button_height"
+        android:layout_height="@dimen/action_button_height"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toStartOf="@+id/callButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/directionsButton"
+        app:layout_constraintTop_toBottomOf="@+id/schoolNameText"
+        app:srcCompat="@android:drawable/ic_dialog_email"
+        app:tint="@color/primaryColor" />
+
+    <ImageButton
+        android:id="@+id/callButton"
+        android:layout_width="@dimen/action_button_height"
+        android:layout_height="@dimen/action_button_height"
+        android:layout_marginStart="20dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/emailButton"
+        app:layout_constraintEnd_toStartOf="@+id/websiteButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/emailButton"
+        app:layout_constraintTop_toTopOf="@+id/emailButton"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:drawable/ic_menu_call"
+        app:tint="@color/primaryColor" />
+
+    <ImageButton
+        android:id="@+id/directionsButton"
+        android:layout_width="@dimen/action_button_height"
+        android:layout_height="@dimen/action_button_height"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/school_location_button"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/emailButton"
+        app:layout_constraintEnd_toStartOf="@+id/emailButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/emailButton"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:drawable/ic_dialog_map"
+        app:tint="@color/primaryColor" />
+
+    <ImageButton
+        android:id="@+id/websiteButton"
+        android:layout_width="@dimen/action_button_height"
+        android:layout_height="@dimen/action_button_height"
+        android:layout_marginStart="20dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/school_website_button"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/callButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/callButton"
+        app:layout_constraintTop_toTopOf="@+id/callButton"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:drawable/ic_dialog_info"
+        app:tint="@color/primaryColor" />
+
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:scrollHorizontally="false"
+        android:singleLine="false"
+        android:text="@string/school_description"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailButton" />
+
+    <TextView
+        android:id="@+id/schoolNameText"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:scrollHorizontally="false"
+        android:singleLine="false"
+        android:text="@string/school_name"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/school_toolbar" />
+
+    <TextView
+        android:id="@+id/satScoresTitleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:text="@string/sat_test_scores_title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
+
+    <TextView
+        android:id="@+id/satScoresTextView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:ellipsize="none"
+        android:ems="10"
+        android:scrollHorizontally="false"
+        android:singleLine="false"
+        android:text="@string/sat_scores_loading_text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/satScoresTitleView" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/school_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryColor"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/nyc_schools_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
