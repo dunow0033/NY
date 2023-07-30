@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
 @Entity(tableName = "sat_table")
 class SATScores(@field:ColumnInfo(name = "dbn") @field:PrimaryKey var dbn: String) {
 

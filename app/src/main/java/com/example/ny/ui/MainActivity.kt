@@ -12,30 +12,38 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ny.R
 import com.example.ny.adapter.SchoolListAdapter
+import com.example.ny.databinding.ActivityMainBinding
 import com.example.ny.viewmodel.SchoolViewModel
 import java.util.*
 
 class MainActivity : AppCompatActivity()  //, SearchView.OnQueryTextListener {
 {
+    private lateinit var binding: ActivityMainBinding
 
     private var mSchoolViewModel: SchoolViewModel? = null
-    private var adapter: SchoolListAdapter? = null
+    private var Schooladapter: SchoolListAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        adapter = SchoolListAdapter(SchoolListAdapter.SchoolDiff())
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setupRecyclerView()
+
         mSchoolViewModel = ViewModelProvider(this).get(SchoolViewModel::class.java)
 
         // Update the cached copy of the words in the adapter.
-        mSchoolViewModel!!.allSchools.observe(this) { list -> adapter?.submitList(list) }
+        mSchoolViewModel!!.allSchools.observe(this) { list -> Schooladapter?.submitList(list) }
+
         mSchoolViewModel!!.loadSchools()
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
     }
+
+    private fun setupRecyclerView() = binding.recyclerview.apply {
+        Schooladapter = SchoolListAdapter(SchoolListAdapter.SchoolDiff())
+        adapter = Schooladapter
+        layoutManager = LinearLayoutManager(this@MainActivity)
+    }
+}
 
 //    @SuppressLint("ResourceType")
 //    override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -70,4 +78,3 @@ class MainActivity : AppCompatActivity()  //, SearchView.OnQueryTextListener {
 //        mSchoolViewModel?.getFilteredSchools(newText)?.observe(this) { list -> adapter?.submitList(list) }
 //        return true
 //    }
-}

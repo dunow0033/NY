@@ -10,19 +10,19 @@ import com.example.ny.R
 import com.example.ny.model.School
 
 class SchoolViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
     private val schoolItemView: TextView
     private var school: School? = null
 
     fun bind(school: School) {
         this.school = school
-        schoolItemView.setText(school.school_name)
+        schoolItemView.text = school.school_name
     }
 
     companion object {
-        fun create(parent: ViewGroup): SchoolViewHolder {
-            val view: View = LayoutInflater.from(parent.context)
-                .inflate(R.layout.schools_simple_recyclerview_item, parent, false)
-            return SchoolViewHolder(view)
+        fun build(parent: ViewGroup): SchoolViewHolder {
+            return SchoolViewHolder(LayoutInflater.from(parent.context)
+                .inflate(R.layout.schools_recyclerview_item, parent, false))
         }
     }
 

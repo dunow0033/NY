@@ -13,10 +13,6 @@ class SchoolViewModel(application: Application) : AndroidViewModel(application) 
     val allSchools: LiveData<List<School>>
         get() = mAllSchools
 
-    fun getFilteredSchools(searchString: String): LiveData<List<School>> {
-        return mRepository.getFilteredSchools(searchString)
-    }
-
     fun loadSchools() {
         mRepository.loadSchools()
     }

@@ -17,7 +17,7 @@ interface SATScoresDao {
     @Query("SELECT * FROM sat_table where dbn = :schoolDBN")
     fun getScore(schoolDBN: String?): LiveData<SATScores>
 
-    @Query("SELECT * FROM sat_table  ORDER BY school_name ASC")
+    @Query("SELECT * FROM sat_table ORDER BY school_name ASC")
     @Transaction
     @VisibleForTesting
     fun getAllScores(): LiveData<List<SATScores>>

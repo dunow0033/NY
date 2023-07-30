@@ -7,40 +7,10 @@
     android:layout_height="match_parent">
 
     <ImageButton
-        android:id="@+id/emailButton"
-        android:layout_width="@dimen/action_button_height"
-        android:layout_height="@dimen/action_button_height"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toStartOf="@+id/callButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/directionsButton"
-        app:layout_constraintTop_toBottomOf="@+id/schoolNameText"
-        app:srcCompat="@android:drawable/ic_dialog_email"
-        app:tint="@color/primaryColor" />
-
-    <ImageButton
-        android:id="@+id/callButton"
-        android:layout_width="@dimen/action_button_height"
-        android:layout_height="@dimen/action_button_height"
-        android:layout_marginStart="20dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/emailButton"
-        app:layout_constraintEnd_toStartOf="@+id/websiteButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/emailButton"
-        app:layout_constraintTop_toTopOf="@+id/emailButton"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@android:drawable/ic_menu_call"
-        app:tint="@color/primaryColor" />
-
-    <ImageButton
         android:id="@+id/directionsButton"
         android:layout_width="@dimen/action_button_height"
         android:layout_height="@dimen/action_button_height"
+        android:layout_marginStart="20dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/school_location_button"
         android:scaleType="fitCenter"
@@ -54,20 +24,17 @@
         app:tint="@color/primaryColor" />
 
     <ImageButton
-        android:id="@+id/websiteButton"
+        android:id="@+id/emailButton"
         android:layout_width="@dimen/action_button_height"
         android:layout_height="@dimen/action_button_height"
-        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@android:color/transparent"
-        android:contentDescription="@string/school_website_button"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/callButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/callButton"
-        app:layout_constraintTop_toTopOf="@+id/callButton"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@android:drawable/ic_dialog_info"
+        app:layout_constraintStart_toEndOf="@+id/directionsButton"
+        app:layout_constraintTop_toBottomOf="@+id/schoolNameText"
+        app:srcCompat="@android:drawable/ic_dialog_email"
         app:tint="@color/primaryColor" />
 
     <TextView

@@ -49,7 +49,7 @@ class SchoolRepository internal constructor(context: Context?) {
      * Insert Schools into DB in background
      * @param schools
      */
-    fun insertAll(schools: List<School?>?) {
+    fun insertSchools(schools: List<School?>?) {
         SchoolRoomDatabase.databaseWriteExecutor.execute { mSchoolDao.insertAll(schools) }
     }
 
@@ -57,9 +57,9 @@ class SchoolRepository internal constructor(context: Context?) {
      * Insert Scores into DB in background
      * @param scores
      */
-//    fun insertAllScores(scores: List<SATScores?>?) {
-//        SchoolRoomDatabase.databaseWriteExecutor.execute { mScoresDao.insertAll(scores) }
-//    }
+    fun insertScores(scores: List<SATScores?>?) {
+        SchoolRoomDatabase.databaseWriteExecutor.execute { mScoresDao.insertAll(scores) }
+    }
 
     /**
      * From here lies all code related to REST API calls using OKHTTP.
@@ -85,11 +85,11 @@ class SchoolRepository internal constructor(context: Context?) {
                 override fun onFailure(call: Call, e: IOException) {}
                 @Throws(IOException::class)
                 override fun onResponse(call: Call, response: Response) {
-//                    val jsonData: String = response.body!!.string()
-//                    // Load data as School Object using Gson
-//                    val listType: Type = object : TypeToken<List<School?>?>() {}.getType()
-//                    val schools: List<School?> = Gson().fromJson(jsonData, listType)
-//                    insertAll(schools)
+                    val jsonData: String = response.body!!.string()
+                    // Load data as School Object using Gson
+                    val listType: Type = object : TypeToken<List<School>>() {}.type
+                    val schools: List<School?> = Gson().fromJson(jsonData, listType)
+                    insertSchools(schools)
                 }
             })
         } catch (e: Exception) {
@@ -112,11 +112,11 @@ class SchoolRepository internal constructor(context: Context?) {
                 override fun onFailure(call: Call, e: IOException) {}
                 @Throws(IOException::class)
                 override fun onResponse(call: Call, response: Response) {
-//                    val jsonData: String = response.body!!.string()
-//                    // Load data as SATScores Object using Gson
-//                    val listType: Type = object : TypeToken<List<SATScores?>?>() {}.getType()
-//                    val satScores: List<SATScores?> = Gson().fromJson(jsonData, listType)
-//                    insertAllScores(satScores)
+                    val jsonData: String = response.body!!.string()
+                    // Load data as SATScores Object using Gson
+                    val listType: Type = object : TypeToken<List<SATScores>>() {}.type
+                    val satScores: List<SATScores?> = Gson().fromJson(jsonData, listType)
+                    insertScores(satScores)
                 }
             })
         } catch (e: Exception) {
@@ -126,8 +126,7 @@ class SchoolRepository internal constructor(context: Context?) {
 
     companion object {
         private const val NYC_SCHOOLS_URL = "https://data.cityofnewyork.us/resource/s3k6-pzi2.json"
-        private const val NYC_SCHOOLS_SAT_SCORES_URL =
-            "https://data.cityofnewyork.us/resource/f9bf-2cp4.json"
+        private const val NYC_SCHOOLS_SAT_SCORES_URL = "https://data.cityofnewyork.us/resource/f9bf-2cp4.json"
 
         @Volatile
         private var INSTANCE: SchoolRepository? = null
@@ -152,7 +151,7 @@ class SchoolRepository internal constructor(context: Context?) {
     init {
         val db: SchoolRoomDatabase? = SchoolRoomDatabase.getDatabase(context!!)
         mSchoolDao = db!!.schoolDao()
-        mScoresDao = db!!.satScoresDao()
+        mScoresDao = db.satScoresDao()
         mAllSchools = mSchoolDao.getSchools()
     }
 }

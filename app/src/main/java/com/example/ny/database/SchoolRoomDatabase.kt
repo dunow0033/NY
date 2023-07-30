@@ -7,10 +7,12 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.ny.model.SATScores
 import com.example.ny.model.School
+import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 @Database(entities = [School::class, SATScores::class], version = 1, exportSchema = false)
 abstract class SchoolRoomDatabase : RoomDatabase() {
+
     abstract fun schoolDao(): SchoolDao
     abstract fun satScoresDao(): SATScoresDao
 
@@ -20,7 +22,7 @@ abstract class SchoolRoomDatabase : RoomDatabase() {
         private const val NUMBER_OF_THREADS = 10
 
         // Uses the Executer Service to run DB operations in background and concurrently
-        val databaseWriteExecutor = Executors.newFixedThreadPool(
+        val databaseWriteExecutor: ExecutorService = Executors.newFixedThreadPool(
             NUMBER_OF_THREADS
         )
 

@@ -3,10 +3,12 @@ package com.example.ny.model
 import android.os.Parcel
 import android.os.Parcelable
 import android.os.Parcelable.Creator
+import androidx.annotation.NonNull
+import kotlinx.android.parcel.Parcelize
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-
+import kotlinx.parcelize.Parceler
 
 @Entity(tableName = "school_table")
 class School : Parcelable {
